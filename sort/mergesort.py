@@ -1,19 +1,39 @@
+#MERGEi(A; p; q; r) where A is an array and p, q, and r are indices into the array
+# such that p  q < r.
 def merge(first, second):
-	mergedList = []
-	while(len(first)>1 and len(second) >1):
-		if(first[0] > second[0]):
-			mergedList.append(second[0])
-			del second[0] 
-		else:
-			mergedList.append(first[0])
-			del first[0]
-
-		if (len(first) < 1):
-			mergedList.append(second[0])
-		if(len(second) < 1):
-			mergedList.append(second[0])
+Merge(A,p,q,r)
+	n1 = q-p+1 #find mid point 
+	n2 = r- q
+	L = [] # Left array
+	R = [] # Right array
 	
+	for i = 1 to n1
+		L[i] = A[p+i-1]
+
+	for j = 1 to n2
+		R[j] = A[1+j]
+	L[n1 +1] = inf # sentinal card
+	R[n2 +1] = inf # = infinity
+
+	i = 1
+	j= 1
+	for k = p to r
+		if(L[i]<= R[j])
+			A[k] = L[i]
+			i = i+1
+		else: 
+			A[k] = R[j]
+			j = j+1
+ 
 	return mergedList
+
+Merge-Sort(A,p,r)
+	q = floor(p+r/2)
+	Merege-sort(A,p,q)
+	Merge-sort (A,q+1,r)
+	Merge(A,p,q,r)
+ 
+
 
 def mergeSort(arr):
 #base case
