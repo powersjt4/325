@@ -6,11 +6,11 @@
 def merge(arr, l, m, r):
     n1 = m - l + 1
     n2 = r- m
- 
+
     # create temp arrays
     L = [0] * (n1)
     R = [0] * (n2)
- 
+
     # Copy data to temp arrays L[] and R[]
     for i in range(0 , n1):
         L[i] = arr[l + i]
