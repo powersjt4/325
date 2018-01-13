@@ -5,6 +5,8 @@ Other resources:
 http://love-python.blogspot.com/2013/10/merge-sort-implementation-in-python.html
 //www.geeksforgeeks.org/merge-sort/rint(array)
 """
+import time
+import random 
            #p q r
 def merge(A,l,m,r):
 #    n1 = m-l+1 
@@ -26,30 +28,21 @@ def merge(A,l,m,r):
         else:
             A[k] = R[j]
             j+=1
- 
+
 def mergeSort(A,l,r):
     if l<r:
-	m = (l+(r-1))/2
+	m = (l+r)/2
 	mergeSort(A,l,m)
 	mergeSort(A,m+1,r)
 	merge(A,l,m,r)
-
 #main 
-input = "data.txt"
-output = "merge.out"
-inFile = open(input, "r")
-outFile = open(output, "w")
+nums = input("Number of random values: ")
+array = []
+for x in range(nums):
+    array.append(random.randint(0,10000))
+length = nums
 
-for line in inFile:
-        array = [] 
-        for val in line.split():
-            array.append(int(val))
-	length = array.pop(0) 
-        print length
-        mergeSort(array,0,length-1)
-        print(array)
-        for item in array:
-            outFile.write("%d "% item)
-        outFile.write("\n")
-inFile.close()
-outFile.close()
+
+start_time = time.time()
+mergeSort(array,0,length-1)
+print("--- %s seconds ---" % (time.time() - start_time))
