@@ -15,7 +15,6 @@ def insertSort(length,array):
 			array[prev+1] = array[prev]
 			prev -= 1
 		array[prev+1] = cur
-	print("--- %s seconds ---" % (time.time() - start_time))	
 
 #main
 nums = input("Number of values: ")
