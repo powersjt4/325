@@ -6,3 +6,15 @@
 *.pdf
 
 *.xlsx
+
+*.zip
+
+sort/JPowers_325W18_HW1andEC/ECinsertsort.py
+
+sort/JPowers_325W18_HW1andEC/ECmergesort.py
+
+sort/JPowers_325W18_HW1andEC/insertsort.py
+
+sort/JPowers_325W18_HW1andEC/mergesort.py
+
+sort/JPowers_325W18_HW1andEC/readme.txt
