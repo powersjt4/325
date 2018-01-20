@@ -5,8 +5,6 @@
 
 *.pdf
 
-*.xlsx
-
 *.zip
 
 sort/JPowers_325W18_HW1andEC/ECinsertsort.py
