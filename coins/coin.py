@@ -1,12 +1,15 @@
-Change(d, k, n)
-C[0] ← 0
-for p ← 1 to n
-	min ← ∞
-	for i ← 1 to k
-		if d[i] ≤ p then
-			if 1 + C[p − d[i]] < min then
-			min ← 1 + C[p − d[i]]
- 			coin ← i
- 			C[p] ← min
-			S[p] ← coin
- return C and S
+def makeChange(values,chgAmount, count, coinTypes):
+	for i in range (chgAmount+1):
+		coin = 1
+		currentCount = i
+		for j in [c for c in values if c <= i]:
+	 		if (count[i-j] + 1) < currentCount:
+				currentCount = count[i-j]+1
+				coin = j
+			count[i] = currentCount
+			coinTypes[i] = coin
+	return count[chgAmount]
+
+
+#main
+
