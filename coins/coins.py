@@ -6,32 +6,29 @@ Other resources: https://www.geeksforgeeks.org/insertion-sort/
 input = "amount.txt"
 output = "change.txt"
 """
-def makeChange(values,chgAmount, count, coinTypes):
-	for i in range (chgAmount+1):
-		coin = 1
-		currentCount = i
-		for j in [c for c in values if c <= i]:
-	 		if (count[i-j] + 1) < currentCount:
-				currentCount = count[i-j]+1
-				coin = j
-			count[i] = currentCount
-			coinTypes[i] = coin
-	
-	return count[chgAmount]
+V = Denominations of coins, A = Amount of coins to change
+T = storesmin number of coins to make amount
+C = values of coin types to make amount 
 """
-def makeChange(V,A,T,C):
-	for i in range (A+1):
-		coin = 1
-		currentCount = i
-		for j in [c for c in V if c <= i]:
-	 		if (T[i-j] + 1) < currentCount:
-				currentCount = T[i-j]+1
-				coin = j
-			T[i] = currentCount
-			C[i] = coin
-	
-	return T[A]
 
+def makeChange(V,A,T,C):
+	for j in range(len(V)):
+		for i in range(1, A+1):
+			cur = V[j]
+			if i >= V[j]:
+				if T[i] > 1+T[i-cur]:
+					T[i] = 1 + T[i-cur]
+					C[i] = j
+	
+	start = len(C)-1				
+	while (start > 0): 
+		print (V)
+		print (C)
+		print (T)
+		coin = V[C[start]]
+		#print "%d "% coin,
+		start = start - coin
+	return T[A-1] #Return min number of coins
 
 def writeToFile(array, amount, coins):
     for item in array:
@@ -41,6 +38,7 @@ def writeToFile(array, amount, coins):
     for coin in coins:
         outFile.write("%d "% coin)
     outFile.write("\n\n")
+
 
 #main
 inFile = open(input, "r")
@@ -52,12 +50,15 @@ while True:
         amount = int(inFile.readline())#amount to change
         for val in line.split():
             values.append(int(val))
-        count = [0]*(amount+1)
-        coinTypes = [0]*(amount+1)
+        count = [float("inf") for idx in range(amount+1)]#min number of coins to make amount
+        coinTypes = [-1 for idx in range(amount + 1)]#Stores values of coin types  
         makeChange(values, amount, count, coinTypes) 
-        print(amount)
-        print(coinTypes)
-        print(values)
+#        print(amount)
+#        print(count)
+#        print(coinTypes)
+#        print(values)
         writeToFile(values, amount, coinTypes)
 inFile.close()
 outFile.close()
+
+
