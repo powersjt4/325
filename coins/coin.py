@@ -16,25 +16,31 @@ def makeChange(values,chgAmount, count, coinTypes):
 			count[i] = currentCount
 			coinTypes[i] = coin
 	return count[chgAmount]
+
 def writeToFile(array, amount, coins):
     for item in array:
         outFile.write("%d "% item)
     outFile.write("\n")
     outFile.write("%d \n" %amount) 
-        
+    for coin in coins:
+        outFile.write("%d "% coin)
+    outFile.write("\n\n")
+
 #main
 inFile = open(input, "r")
-outFile = open(output, "w")
+outFile = open(output, "w") 
 while True:
-        array = []
+        values = []#Denominations of coins
         line = inFile.readline() 
         if not line: break  # EOF
-        amount = int(inFile.readline())
+        amount = int(inFile.readline())#amount to change
         for val in line.split():
-            array.append(int(val))
+            values.append(int(val))
+        count = [0]*(amount+1)
+        coinTypes = [0]*(amount+1)
+        makeChange(values, amount, count, coinTypes) 
         print(amount)
-        print(isinstance(amount, int))
-        print(array)
-        writeToFile(array, amount, array)
+        print(values)
+        writeToFile(values, amount, coinTypes)
 inFile.close()
 outFile.close()
