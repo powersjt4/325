@@ -5,20 +5,7 @@ Other resources: https://www.geeksforgeeks.org/insertion-sort/
 """
 input = "amount.txt"
 output = "change.txt"
-"""
-def makeChange(values,chgAmount, count, coinTypes):
-	for i in range (chgAmount+1):
-		coin = 1
-		currentCount = i
-		for j in [c for c in values if c <= i]:
-	 		if (count[i-j] + 1) < currentCount:
-				currentCount = count[i-j]+1
-				coin = j
-			count[i] = currentCount
-			coinTypes[i] = coin
-	
-	return count[chgAmount]
-"""
+
 def makeChange(V,A,T,C):
 	for i in range (A+1):
 		coin = 1
@@ -29,7 +16,6 @@ def makeChange(V,A,T,C):
 				coin = j
 			T[i] = currentCount
 			C[i] = coin
-	
 	return T[A]
 
 
