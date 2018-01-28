@@ -1,3 +1,5 @@
+import time
+
 """
 This is an implementation of insertion sort
 from introduction to algorithms, CLRS
@@ -25,7 +27,7 @@ Writes all the information to the output file
 calculates the denomenations used and creates a new array
 for track coin use.
 """
-def writeToFile(array, amount, coins, count):
+def writeToFile(array, amount, coins, count, timer):
     for item in array:
         outFile.write("%d "% item)
     outFile.write("\n")
@@ -40,7 +42,9 @@ def writeToFile(array, amount, coins, count):
         coin = coin - current #Subtracts current value to get next value
     for item in coinCnt:
         outFile.write("%d "% item)
+    
     outFile.write("\n%d "% count[amount])
+    outFile.write("\nThis is time ->%s "% timer)
     outFile.write("\n\n")
 
 #main
@@ -55,8 +59,10 @@ while True:
             values.append(int(val))
         count = [0]*(amount+1)
         coinTypes = [0]*(amount+1)
+        start_time = time.time()
         makeChange(values, amount, count, coinTypes) 
-        writeToFile(values, amount, coinTypes, count)
+        timer = time.time() - start_time
+        writeToFile(values, amount, coinTypes, count, timer)
 
 print("...results written to changes.txt")
 inFile.close()

@@ -8,8 +8,8 @@ output = "insert.out"
 inFile = open(input, "r")
 outFile = open(output, "w")
 
+array = [] 
 for line in inFile:
-        array = [] 
         for val in line.split():
             array.append(int(val))
 	length = int(array[0]) 
