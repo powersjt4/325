@@ -6,7 +6,7 @@ from introduction to algorithms, CLRS
 Other resources: 
 http://interactivepython.org/runestone/static/pythonds/Recursion/DynamicProgramming.html
 """
-input = "amount.txt"
+#input = "amount.txt"
 output = "change.txt"
 """
 Modeled after code found in link above and pseudocode
@@ -44,10 +44,21 @@ def writeToFile(array, amount, coins, count, timer):
         outFile.write("%d "% item)
     
     outFile.write("\n%d "% count[amount])
-    outFile.write("\nThis is time ->%s "% timer)
+    print("\nThis is time ->%s "% timer)
     outFile.write("\n\n")
 
 #main
+print("1: amountA.txt")
+print("2: amountD.txt")
+print("3: amountAD.txt")
+selection = input("Which text file would you like to run: ")
+if (selection == 1):
+	input = "amountA.txt"
+elif (selection == 2):
+	input = "amountD.txt"
+elif (selection == 3):
+	input = "amountAD.txt"
+print(input)
 inFile = open(input, "r")
 outFile = open(output, "w") 
 while True:

@@ -22,7 +22,7 @@ def makeChange(V,A,T,C):
             C[i] = coin
 """
 Writes all the information to the output file 
-calculates the denomenations used and creates a new array
+calculates the denominations used and creates a new array
 for track coin use.
 """
 def writeToFile(array, amount, coins, count):
@@ -45,7 +45,7 @@ def writeToFile(array, amount, coins, count):
 
 #main
 inFile = open(input, "r")
-outFile = open(output, "w") 
+outFile = open(output, "w+") 
 while True:
         values = []#Denominations of coins
         line = inFile.readline() 
