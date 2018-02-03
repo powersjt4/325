@@ -28,9 +28,9 @@ def activitySchedule(A,length):
  
 def activitySchedule(A,length):	
     print(A[0])
-    k = 1
+    k = 0 
     for i in range(1, int(length)):
-        if(A[i][2] <= A[k][1]):  
+        if(A[k][1]>=A[i][2]):  
             print(A[i])
             k = i
         
@@ -56,7 +56,6 @@ while True:
              j-= 1
          A[j+1] = prev   
     activitySchedule(A,arrLen)		
-
 
     print(A)
     print("\n\n")
