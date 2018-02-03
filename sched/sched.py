@@ -26,14 +26,22 @@ def activitySchedule(A,length):
 """                
 
  
-def activitySchedule(A,length):	
-    print(A[0])
+def activitySchedule(A,length,set):	
+    pArr = [A[0]]
     k = 0 
     for i in range(1, int(length)):
         if(A[k][1]>=A[i][2]):  
-            print(A[i])
+            #print(A[i])
+            pArr.append(A[i])
             k = i
-        
+    pArr = sorted(pArr, key=lambda x: x[1])
+    print("Set %d" %set) 
+    print("Number of activities selected = %d" %len(pArr)) 
+    print("Activities:"),     
+    for i in pArr:
+        print(i[0]), 
+
+set = 1
 while True:
     A = []
     arrLen = inFile.readline()#Read in length, first line
@@ -44,7 +52,6 @@ while True:
         for i in line.split():#Splits line into act. #, start, finish
             A[lineItem].append(int(i))#Appends to new row in t and converts to int
 
-    print(A)
 #Insertion sort sort whole row by the last value the finish time.
 # A[i][1] = sort on start time, A[i][2] = sort on finish time    
     for i in range(1, int(arrLen)):
@@ -55,9 +62,8 @@ while True:
              A[j+1] = A[j]
              j-= 1
          A[j+1] = prev   
-    activitySchedule(A,arrLen)		
-
-    print(A)
+    activitySchedule(A,arrLen,set)		
+    set = set+1
     print("\n\n")
 inFile.close()
 

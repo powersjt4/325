@@ -1,0 +1,17 @@
+first compare two adjacent activities: (if the start time of prev > next)
+											print the greater of the two
+Greedy-Iterative-Activity-Selector(A, s, f): 
+ 2 
+ 3     Sort A by finish times stored in f'
+ 4     
+ 5     S = {A[1]} 
+ 6     k = 1
+ 7     
+ 8     n = A.length
+ 9     
+10     for i = 2 to n:
+11        if s[i] ≥ f[k]: 
+12            S = S U {A[i]}
+13            k = i
+14     
+15     return S
