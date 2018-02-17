@@ -1,12 +1,17 @@
 """
-This is an implementation of an activity scheduler 
+This is a test file to see if tuples are the way to go
 """
 import itertools
 from sys import argv
 from collections import deque
 script, inFilename = argv
-#inFile = open(inFilename, "r")
-G = {}
+
+class vertex:
+     def __init__(self):
+        self.adj = [] 
+        self.color = "WHITE"
+        self.team = "baby"
+G = {} 
 wArr = []
 eArr = []
 
@@ -15,25 +20,31 @@ with open(inFilename, "r") as inFile:
 	for i in range(0,numW):
 		wArr.append(inFile.readline())
 	wArr = [x.rstrip() for x in wArr]
-	G = dict((x,[]) for x in wArr)
+	G = dict((x,vertex()) for x in wArr)
 	numE = int(inFile.readline())
-	for line in range(0, numE):
-		edge = inFile.readline().split()
-		print edge[0]
-		G[edge[0]].append(edge[1])
-		G[edge[1]].append(edge[0])
-#print wArr
-#for key in G:
-#    G[key].append([0,2])
-G = dict((x,white) for x in wArr)
-babs = []
-heels = []
-Q = deque([])
-Q.append(wArr[0])
-print Q
-while len(Q) != 0:
-    u = Q.popleft()
-        for x in G[u]  
+        for line in range(0, numE):
+            edge = inFile.readline().split()
+            G[edge[0]].adj.append(edge[1])
+            G[edge[1]].adj.append(edge[0])
+for key in G:
+    if(G[key].color=="WHITE"):
+        Q = deque([])
+        Q.append(key)
+        while len(Q) != 0:
+            u = Q.popleft()
+            for v in G[u].adj:
+                if G[v].color == "GRAY" and v == u:
+                    print "Failure!"
+                if G[v].color == "WHITE":
+                    G[v].color = "GRAY"
+                    if G[u].team == "baby":
+                        G[v].team = "heel"
+                    else:
+                        G[v].team = "baby"
+                    Q.append(v)
+            G[v].color= "BLACK"
+for key in G:
+    print key +" "+G[key].color
 """
 GoodBadGuys(list of wrestlers, pairs of rivalries)
 Build an adjacency list representation for G = (V, E) such that each wrestler
@@ -63,4 +74,7 @@ BFS-GOOD-BAD(G, s, guy)
                 ENQUEUE(Q, v)
         color[u] == BLACK
  return guy
+
+print G[key].adj
 """
+
