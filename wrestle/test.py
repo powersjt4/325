@@ -44,37 +44,8 @@ for key in G:
                     Q.append(v)
             G[v].color= "BLACK"
 for key in G:
-    print key +" "+G[key].color
+    print key +" "+G[key].team
 """
-GoodBadGuys(list of wrestlers, pairs of rivalries)
-Build an adjacency list representation for G = (V, E) such that each wrestler
-corresponds to a vertex in V and each edge in E = (V1, V2) represents a rivalry between
-the wrestlers associated with V1 and V2
- for each vertex u is in V [G]
-    do color [u] == WHITE
- for each vertex u in in V [G]
-    do if color [u] = WHITE
-        then guy==BFS-GOOD-BAD(G, u, guy)
- return guy
-BFS-GOOD-BAD(G, s, guy)
- color[s] == Gray
- guy[s] == GOOD
- Q == nil 
- ENQUEUE(Q, s)
- while Q not empty 
-    do u == DEQUEUE(Q)
-        for each v is in Adj[u]
-            do if color[v] = GRAY and guy[v] = guy[u]
-                then return FAIL
-            if color[v] = WHITE
-                then color[v] == GRAY
-                if guy[u] = GOOD
-                    then guy[v] == BAD
-                    else guy[v] == GOOD
-                ENQUEUE(Q, v)
-        color[u] == BLACK
- return guy
-
 print G[key].adj
 """
 
